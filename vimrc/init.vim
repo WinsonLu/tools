@@ -26,9 +26,10 @@ call plug#begin('~/.vim/plugged')
 	autocmd BufEnter * call ncm2#enable_for_buffer()
 	autocmd vimenter * GitGutterEnable
 call plug#end()
-" path to directory where libclang.so can be found
-"let g:ncm2_jedi#python3_host_prog=/home/winson/anaconda3/bin/python3
-let g:ncm2_pyclang#library_path = '/usr/lib/llvm-8/lib'
+"' path to directory where libclang.so can be found
+let g:ncm2_jedi#python_version = 3
+let g:ncm2_jedi#python3_host_prog='/usr/bin/python3'
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-9/lib/libclang.so.1'
 " or path to the libclang.so file
 "let g:ncm2_pyclang#library_path = '/usr/lib/'
 
