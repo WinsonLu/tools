@@ -9,10 +9,10 @@ fi
 dist=$1
 case $dist in
 	ubuntu)
-		sudo apt install neovim python3 clang-9 python3-pip
+		sudo apt install neovim python3 clang-9 python3-pip ccls
 		;;
 	arch)
-		sudo pacman -S neovim python3 clang python-pip
+		sudo pacman -S neovim python3 clang python-pip ccls
 		;;
 	*)
 		echo "Usage: setup.sh [ubuntu|arch]"
