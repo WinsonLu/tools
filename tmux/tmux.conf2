@@ -1,0 +1,37 @@
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+    
+#将激活控制台的快捷键由Ctrl+b修改为Ctrl+a，Ctrl+a是Screen的快捷键
+unbind-key C-b   
+set-option -g prefix C-x
+bind-key C-t send-prefix   
+    
+#添加自定义快捷键   
+# bind-key z kill-session                     #按z结束当前会话；相当于进入命令行模式后输入kill-session   
+
+#按s水平分窗
+unbind-key s
+unbind-key '"'
+bind-key s split-window
+#按纵向分窗
+unbind-key %
+bind-key v split-window -h
+
+bind-key k select-pane -U #up 
+bind-key j select-pane -D #down
+bind-key h select-pane -L #left
+bind-key l select-pane -R #right
+#select last window
+#Ctrl+w Ctrl+l切换窗口
+bind-key C-l select-window -l
+
+# resize panes like vim
+# feel free to change the "1" to however many lines you want to resize by,
+# only one at a time can be slow
+bind < resize-pane -L 10
+bind > resize-pane -R 10
+bind - resize-pane -D 10
+bind + resize-pane -U 10
+
+#copy-mode 将快捷键设置为vi 模式
+setw -g mode-keys vi
+set -g history-limit 10000
