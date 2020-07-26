@@ -11,7 +11,7 @@ if [[ $DEBUG == "True" ]]; then
 	cp config.yaml $HOME/.config/efm-langserver/
 
 	sudo npm install -g markdownlint-cli
-	$PIP_CMD install vim-vint
+	sudo $PIP_CMD install vim-vint
 else
 	if [[ $? != 0 ]]; then
 		go get github.com/mattn/efm-langserver &> ./log && cp $HOME/go/bin/efm-langserver &>> ./log
@@ -20,6 +20,6 @@ else
 	cp config.yaml $HOME/.config/efm-langserver/ &>> ./log
 
 	sudo npm install -g markdownlint-cli &>> ./log
-	$PIP_CMD install vim-vint &>> ./log
+	sudo $PIP_CMD install vim-vint &>> ./log
 fi
 

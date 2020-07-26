@@ -9,7 +9,7 @@ if [[ $? != 0 ]]; then
 fi
 
 if [[ $DEBUG == "Tue" ]]; then
-	$PIP_CMD install cmake-language-server
+	sudo $PIP_CMD install cmake-language-server
 else
-	$PIP_CMD install cmake-language-server &> ./log
+	sudo $PIP_CMD install cmake-language-server &> ./log
 fi

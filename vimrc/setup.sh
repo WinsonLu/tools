@@ -9,7 +9,7 @@ HOME_BIN_DIR=$HOME/bin
 
 if [ $# -ne 1 ]
 then
-	print_error "Usage: setup.sh [ubuntu|arch|clean]"
+	print_error "Usage: setup.sh [ubuntu|arch|fedora|clean]"
 	exit
 fi
 
@@ -19,11 +19,15 @@ DIST=$1
 case $DIST in
 	ubuntu)
 		print_info "Installing dependencies..."
-		sudo apt install neovim python3 clang-9 python3-pip ccls nodejs npm luarocks lua5.3 liblua5.3-dev haskell-stack -y &> /dev/null
+		sudo apt install neovim python3 clang-9 python3-pip ccls nodejs npm luarocks lua5.3 liblua5.3-dev haskell-stack -y lua-devel &> /dev/null
 		;;
 	arch)
 		print_info "Installing dependencies..."
-		sudo pacman -S neovim python3 clang python-pip ccls nodejs npm luarocks lua stack
+		sudo pacman -S neovim python3 clang python-pip ccls nodejs npm luarocks lua stack lua-devel
+		;;
+	fedora)
+		print_info "Installing dependencies..."
+		sudo dnf install neovim python3 clang python-pip ccls nodejs npm luarocks lua stack lua-devel
 		;;
 	clean)
 		print_info "Clean language servers..."
@@ -37,7 +41,7 @@ case $DIST in
 		exit 0
 		;;
 	*)
-		print_error "Usage: setup.sh [ubuntu|arch|clean]"
+		print_error "Usage: setup.sh [ubuntu|arch|fedora|clean]"
 		exit
 		;;
 esac
@@ -45,7 +49,7 @@ setup_home_bin_dir
 
 # Step.2
 print_info "Installing python dependencies..."
-$PIP_CMD install jedi pynvim &> /dev/null
+sudo $PIP_CMD install jedi pynvim &> /dev/null
 check_and_exit
 
 # Step.3
